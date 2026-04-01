@@ -473,16 +473,10 @@ nav.scrolled {
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
-  transform-style: preserve-3d;
-  perspective: 800px;
-  transition:
-    transform 0.4s ease,
-    box-shadow 0.4s ease;
+  transition: box-shadow 0.4s ease;
 }
 .service-card:hover {
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
-  z-index: 10;
-  position: relative;
+  box-shadow: 0 16px 40px rgba(176, 141, 87, 0.3);
 }
 .service-card__img {
   position: absolute;

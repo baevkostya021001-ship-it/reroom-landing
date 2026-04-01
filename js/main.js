@@ -78,22 +78,7 @@
     { threshold: 0.5 },
   );
   counters.forEach((c) => counterObs.observe(c));
-  document.querySelectorAll(".service-card").forEach((card) => {
-    card.addEventListener("mousemove", (e) => {
-      const r = card.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      card.style.transform =
-        "perspective(800px) rotateY(" +
-        x * 5 +
-        "deg) rotateX(" +
-        -y * 5 +
-        "deg)";
-    });
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "";
-    });
-  });
+  /* Service card hover handled by CSS only */
   document.querySelectorAll(".magnetic-btn").forEach((btn) => {
     btn.addEventListener("mousemove", (e) => {
       const r = btn.getBoundingClientRect();
