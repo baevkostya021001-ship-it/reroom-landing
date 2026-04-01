@@ -118,22 +118,15 @@
     });
   });
   gsap.registerPlugin(ScrollTrigger);
-  const track = document.querySelector(".portfolio-track");
-  if (track) {
-    const ts = track.scrollWidth - window.innerWidth;
-    gsap.to(track, {
-      x: -ts,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".portfolio",
-        start: "top top",
-        end: "+=" + track.scrollWidth,
-        pin: true,
-        scrub: 1,
-        invalidateOnRefresh: true,
-      },
+  gsap.utils.toArray(".portfolio-item").forEach((item, i) => {
+    gsap.from(item, {
+      y: 60,
+      opacity: 0,
+      duration: 0.8,
+      delay: i * 0.15,
+      scrollTrigger: { trigger: item, start: "top 90%" },
     });
-  }
+  });
   gsap.utils.toArray(".section-title h2").forEach((h) => {
     gsap.from(h, {
       y: 60,
