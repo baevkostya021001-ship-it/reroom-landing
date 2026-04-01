@@ -93,18 +93,17 @@
   document.querySelectorAll(".service-card").forEach((card) => {
     card.addEventListener("mousemove", (e) => {
       const r = card.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5,
-        y = (e.clientY - r.top) / r.height - 0.5;
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
       card.style.transform =
-        "perspective(800px) rotateY(" +
-        x * 10 +
+        "translateY(-8px) perspective(800px) rotateY(" +
+        x * 8 +
         "deg) rotateX(" +
-        -y * 10 +
-        "deg) translateZ(10px)";
+        -y * 8 +
+        "deg)";
     });
     card.addEventListener("mouseleave", () => {
-      card.style.transform =
-        "perspective(800px) rotateY(0) rotateX(0) translateZ(0)";
+      card.style.transform = "";
     });
   });
   document.querySelectorAll(".magnetic-btn").forEach((btn) => {
@@ -141,6 +140,15 @@
       opacity: 0,
       duration: 1,
       scrollTrigger: { trigger: h, start: "top 85%" },
+    });
+  });
+  gsap.utils.toArray(".service-card").forEach((card, i) => {
+    gsap.from(card, {
+      y: 60,
+      opacity: 0,
+      duration: 0.7,
+      delay: i * 0.12,
+      scrollTrigger: { trigger: ".services-grid", start: "top 80%" },
     });
   });
   gsap.to(".about-img img", {
