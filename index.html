@@ -130,25 +130,21 @@
 <div class="footer-col"><h4>Контакты</h4>
 <a href="tel:+74732287858">+7 (473) 228-78-58</a><a href="mailto:info@reroom-vrn.ru">info@reroom-vrn.ru</a><p>Воронеж, ул. Донбасская, 1</p></div>
 </div><div class="footer-bottom">© 2024 REROOM. Все права защищены.</div></footer>
-<div class="contact-backdrop" id="contactBackdrop"></div>
 <button class="contact-trigger" id="contactTrigger"><span>Консультация</span></button>
-<div class="contact-panel" id="contactPanel">
-<button class="contact-panel__close" id="contactClose">&times;</button>
-<div class="contact-panel__body" id="contactBody">
-<h3 class="contact-panel__heading">Получите бесплатную консультацию</h3>
-<p class="contact-panel__sub">Оставьте контакты и мы свяжемся с вами в течение 15 минут</p>
-<form class="contact-panel__form" id="contactForm" novalidate>
+<div class="contact-popup" id="contactPanel">
+<button class="contact-popup__close" id="contactClose">&times;</button>
+<div class="contact-popup__body" id="contactBody">
+<h3 class="contact-popup__heading">Перезвоним за 15 минут</h3>
+<form class="contact-popup__form" id="contactForm" novalidate>
 <input type="text" name="name" placeholder="Ваше имя" required>
 <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
-<textarea name="msg" rows="3" placeholder="Что вас интересует?"></textarea>
-<button type="submit">Отправить заявку</button>
+<button type="submit">Жду звонка</button>
 </form>
-<p class="contact-panel__privacy">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
+<p class="contact-popup__privacy">Нажимая, вы соглашаетесь с политикой конфиденциальности</p>
 </div>
-<div id="contactSuccess" class="contact-panel__success">
-<svg class="checkmark" viewBox="0 0 52 52"><circle cx="26" cy="26" r="25" fill="none"/>
-<path fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
-<p>Спасибо! Мы свяжемся с вами в ближайшее время.</p>
+<div id="contactSuccess" class="contact-popup__success">
+<svg class="checkmark" viewBox="0 0 52 52"><circle cx="26" cy="26" r="25" fill="none"/><path fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+<p>Спасибо! Скоро перезвоним.</p>
 </div>
 </div>
 <script src="https://unpkg.com/lenis@1.1.1/dist/lenis.min.js"></script>

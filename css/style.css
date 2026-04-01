@@ -857,28 +857,13 @@ footer {
     font-size: clamp(2rem, 8vw, 3.5rem);
   }
 }
-/* ===== Contact Slide-in Panel ===== */
-.contact-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 997;
-  background: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  visibility: hidden;
-  transition:
-    opacity 0.4s,
-    visibility 0.4s;
-}
-.contact-backdrop.active {
-  opacity: 1;
-  visibility: visible;
-}
+/* ===== Contact Bottom Popup ===== */
 .contact-trigger {
   position: fixed;
   right: 0;
   top: 50%;
   z-index: 998;
-  transform: translateY(-50%) translateX(0);
+  transform: translateY(-50%);
   background: var(--bronze);
   color: #fff;
   border: none;
@@ -902,114 +887,114 @@ footer {
 .contact-trigger:hover {
   padding: 22px 14px;
 }
-.contact-panel {
+.contact-popup {
   position: fixed;
-  top: 0;
-  right: 0;
+  bottom: 24px;
+  right: 24px;
   z-index: 999;
-  width: 380px;
-  height: 100vh;
-  overflow-y: auto;
+  width: 340px;
   background: var(--charcoal);
-  transform: translateX(100%);
-  transition: transform 0.4s ease;
-  padding: 40px 30px;
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  transform: translateY(120%);
+  opacity: 0;
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s ease;
+  pointer-events: none;
 }
-.contact-panel.open {
-  transform: translateX(0);
+.contact-popup.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
 }
-.contact-panel__close {
+.contact-popup__close {
   position: absolute;
-  top: 16px;
-  right: 20px;
+  top: 12px;
+  right: 16px;
   background: none;
   border: none;
-  color: #fff;
-  font-size: 32px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 24px;
   cursor: pointer;
   line-height: 1;
+  transition: color 0.2s;
 }
-.contact-panel__heading {
+.contact-popup__close:hover {
+  color: #fff;
+}
+.contact-popup__heading {
   font-family: var(--font-heading);
   color: #fff;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
-  margin-bottom: 10px;
-  margin-top: 20px;
+  margin-bottom: 16px;
+  padding-right: 20px;
 }
-.contact-panel__sub {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 14px;
-  line-height: 1.5;
-  margin-bottom: 28px;
-}
-.contact-panel__form input,
-.contact-panel__form textarea {
+.contact-popup__form input {
   width: 100%;
-  padding: 14px 16px;
+  padding: 12px 14px;
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   color: #fff;
   font-family: var(--font-body);
-  font-size: 15px;
-  margin-bottom: 16px;
+  font-size: 14px;
+  margin-bottom: 10px;
   outline: none;
   transition:
     border-color 0.3s,
     box-shadow 0.3s;
 }
-.contact-panel__form input::placeholder,
-.contact-panel__form textarea::placeholder {
+.contact-popup__form input::placeholder {
   color: rgba(255, 255, 255, 0.4);
 }
-.contact-panel__form input:focus,
-.contact-panel__form textarea:focus {
+.contact-popup__form input:focus {
   border-color: var(--bronze);
   box-shadow: 0 0 0 3px rgba(176, 141, 87, 0.25);
 }
-.contact-panel__form textarea {
-  resize: vertical;
-}
-.contact-panel__form button {
+.contact-popup__form button {
   width: 100%;
-  padding: 16px;
+  padding: 14px;
   background: var(--bronze);
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   cursor: pointer;
   transition: box-shadow 0.3s;
   font-family: var(--font-body);
+  margin-top: 2px;
 }
-.contact-panel__form button:hover {
+.contact-popup__form button:hover {
   box-shadow: 0 0 20px rgba(176, 141, 87, 0.5);
 }
-.contact-panel__privacy {
-  color: rgba(255, 255, 255, 0.35);
-  font-size: 12px;
-  margin-top: 16px;
-  line-height: 1.5;
+.contact-popup__privacy {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 11px;
+  margin-top: 12px;
+  line-height: 1.4;
+  text-align: center;
 }
-.contact-panel__success {
+.contact-popup__success {
   display: none;
   text-align: center;
-  padding-top: 60px;
+  padding: 20px 0;
   color: #fff;
 }
-.contact-panel__success.show {
+.contact-popup__success.show {
   display: block;
 }
-.contact-panel__success p {
-  font-size: 18px;
-  margin-top: 24px;
-  line-height: 1.5;
+.contact-popup__success p {
+  font-size: 16px;
+  margin-top: 16px;
+  line-height: 1.4;
 }
 .checkmark {
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   margin: 0 auto;
 }
 .checkmark circle {
@@ -1034,8 +1019,11 @@ footer {
   }
 }
 @media (max-width: 768px) {
-  .contact-panel {
-    width: 100%;
+  .contact-popup {
+    right: 12px;
+    left: 12px;
+    bottom: 12px;
+    width: auto;
   }
   .contact-trigger {
     padding: 14px 8px;
