@@ -463,7 +463,7 @@ nav.scrolled {
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 2.5rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -480,9 +480,9 @@ nav.scrolled {
     box-shadow 0.4s ease;
 }
 .service-card:hover {
-  transform: translateY(-8px);
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
   z-index: 10;
+  position: relative;
 }
 .service-card__img {
   position: absolute;

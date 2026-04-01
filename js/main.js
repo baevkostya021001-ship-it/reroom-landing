@@ -84,10 +84,10 @@
       const x = (e.clientX - r.left) / r.width - 0.5;
       const y = (e.clientY - r.top) / r.height - 0.5;
       card.style.transform =
-        "translateY(-8px) perspective(800px) rotateY(" +
-        x * 8 +
+        "perspective(800px) rotateY(" +
+        x * 5 +
         "deg) rotateX(" +
-        -y * 8 +
+        -y * 5 +
         "deg)";
     });
     card.addEventListener("mouseleave", () => {
