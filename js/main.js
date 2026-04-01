@@ -143,13 +143,17 @@
     });
   });
   gsap.utils.toArray(".service-card").forEach((card, i) => {
-    gsap.from(card, {
-      y: 60,
-      opacity: 0,
-      duration: 0.7,
-      delay: i * 0.12,
-      scrollTrigger: { trigger: ".services-grid", start: "top 80%" },
-    });
+    gsap.fromTo(
+      card,
+      { y: 60, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.7,
+        delay: i * 0.12,
+        scrollTrigger: { trigger: ".services-grid", start: "top 80%" },
+      },
+    );
   });
   gsap.to(".about-img img", {
     yPercent: -15,
