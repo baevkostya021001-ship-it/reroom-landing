@@ -204,3 +204,41 @@
       2200 + words.length * 180 + 300,
     );
 })();
+/* Contact Panel */
+(function () {
+  var $ = function (i) {
+      return document.getElementById(i);
+    },
+    t = $("contactTrigger"),
+    p = $("contactPanel"),
+    b = $("contactBackdrop"),
+    x = $("contactClose"),
+    f = $("contactForm"),
+    bd = $("contactBody"),
+    s = $("contactSuccess");
+  if (!t || !p) return;
+  var o = false;
+  function op() {
+    p.classList.add("open");
+    b.classList.add("active");
+    o = true;
+  }
+  function cl() {
+    p.classList.remove("open");
+    b.classList.remove("active");
+  }
+  t.onclick = op;
+  x.onclick = cl;
+  b.onclick = cl;
+  setTimeout(function () {
+    t.classList.add("visible");
+  }, 3e3);
+  setTimeout(function () {
+    if (!o) op();
+  }, 15e3);
+  f.onsubmit = function (e) {
+    e.preventDefault();
+    bd.style.display = "none";
+    s.classList.add("show");
+  };
+})();
