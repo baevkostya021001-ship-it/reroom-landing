@@ -54,19 +54,7 @@
   window.addEventListener("scroll", () => {
     nav.classList.toggle("scrolled", window.scrollY > 50);
   });
-  const revealEls = document.querySelectorAll(".reveal");
-  const revealObs = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add("active");
-          revealObs.unobserve(e.target);
-        }
-      });
-    },
-    { threshold: 0.15 },
-  );
-  revealEls.forEach((el) => revealObs.observe(el));
+  /* Reveal animations handled by GSAP below */
   const counters = document.querySelectorAll(".counter");
   const counterObs = new IntersectionObserver(
     (entries) => {
@@ -118,33 +106,28 @@
     });
   });
   gsap.registerPlugin(ScrollTrigger);
-  gsap.utils.toArray(".portfolio-item").forEach((item, i) => {
-    gsap.from(item, {
-      y: 60,
-      opacity: 0,
-      duration: 0.8,
-      delay: i * 0.15,
-      scrollTrigger: { trigger: item, start: "top 90%" },
-    });
+  /* Unified reveal for ALL .reveal elements */
+  gsap.utils.toArray(".reveal").forEach((el) => {
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        scrollTrigger: { trigger: el, start: "top 90%" },
+      },
+    );
   });
   gsap.utils.toArray(".section-title h2").forEach((h) => {
-    gsap.from(h, {
-      y: 60,
-      opacity: 0,
-      duration: 1,
-      scrollTrigger: { trigger: h, start: "top 85%" },
-    });
-  });
-  gsap.utils.toArray(".service-card").forEach((card, i) => {
     gsap.fromTo(
-      card,
+      h,
       { y: 60, opacity: 0 },
       {
         y: 0,
         opacity: 1,
-        duration: 0.7,
-        delay: i * 0.12,
-        scrollTrigger: { trigger: ".services-grid", start: "top 80%" },
+        duration: 1,
+        scrollTrigger: { trigger: h, start: "top 85%" },
       },
     );
   });

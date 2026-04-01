@@ -684,10 +684,22 @@ nav.scrolled {
   margin-bottom: 1.5rem;
   font-style: italic;
 }
+.review-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 16px;
+}
+.review-source {
+  font-size: 0.8rem;
+  color: rgba(45, 74, 63, 0.5);
+  font-style: italic;
+}
 .review-card .author {
   font-family: var(--font-heading);
   font-size: 1.1rem;
   color: var(--bronze);
+  font-weight: 600;
 }
 .cta {
   background: var(--charcoal);
